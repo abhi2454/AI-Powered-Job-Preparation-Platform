@@ -134,7 +134,7 @@ async function logoutUserController(req,res) {
  */
 
 async function getMeController(req,res) {
-    const user = await userModel.findById(res.user.id)
+    const user = await userModel.findById(req.user.id)
 
 
     res.status(200).json({

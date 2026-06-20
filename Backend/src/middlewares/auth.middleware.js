@@ -28,7 +28,7 @@ async function authUser(req,res, next) {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
         
-        res.user = decoded;             //creating new property named 'user' which stores decoded
+        req.user = decoded;             //creating new property named 'user' which stores decoded
 
         next()
 
