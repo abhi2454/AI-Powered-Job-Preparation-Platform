@@ -321,6 +321,40 @@
         }
     }
 
+    .recent-reports {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        max-width: 900px;
+
+        .reports-list{
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+
+            .report-item {
+                background-color: #091423;
+                border: 1px solid #1b2a3f;
+                border-radius: 0.5rem;
+                padding: 1rem;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                cursor: pointer;
+                flex-shrink: 0;
+
+                .match-score {
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    color: #ff0a78;
+                    align-self: flex-start;
+                }
+            }
+        }
+    } 
+
     .legal-links {
         margin-top: 0.95rem;
         display: flex;

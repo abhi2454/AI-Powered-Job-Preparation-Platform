@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router'
 
 const Home = () => {
     
-    const {loading, generateReport} = useInterview()
+    const {loading, generateReport,reports} = useInterview()
     const [jobDescription, setJobDescription] = useState("")
     const [selfDescription, setSelfDescription] = useState("")
     const resumeInputRef = useRef()
@@ -164,6 +164,26 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                         </button>
                     </footer>
                 </section>
+
+                {/*Recent Reports List */}
+                {reports.length > 0 && (
+                    <section className='recent-reports'>
+                    <h2>Recent Interview Plans</h2>
+                    <ul className = 'reports-list'>
+                        {reports.map(report => (
+                            <li key={report._id} className='report-item' onClick={() => navigate(`/interview/${report._id}`)}>
+                                <h3>{report.title || 'Untitled Report'}</h3>
+                                <p className = 'report-meta'>Generated on {new Date(report.createdAt).toLocaleDateString()}</p>
+                                <p className = {'match-score ' + (report.matchScore >= 80 ? 'score--high' : report.matchScore >= 60 ? 'score--medium' : 'score--low')}>
+                                    Match Score: {report.matchScore}%
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+
+                    </section>
+                )}
+                
 
                 <nav className='legal-links' aria-label='Legal and support'>
                     <a href='#'>Privacy Policy</a>

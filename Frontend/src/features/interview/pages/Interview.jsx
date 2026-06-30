@@ -1,15 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import '../style/interview.scss'
 import {useInterview} from "../hooks/useInterview"
+import {useNavigate, useParams} from "react-router"
 
 const Interview = () => {
-  const [activeSection, setActiveSection] = useState('preperationPlan')
+  const [activeSection, setActiveSection] = useState('roadmap')
   const [expandedTechnical, setExpandedTechnical] = useState(null)
   const [expandedBehavioral, setExpandedBehavioral] = useState(null)
-  const {report} = useInterview()
+  const {report, getRportById, loading} = useInterview()
 
+  const {interviewId} = useParams()
   
- 
+ useEffect(() => {
+    if (interviewId) {
+      getRportById(interviewId)
+    } 
+ }, [interviewId])
+
+    if(loading || !report) {
+        return (
+            <main className = 'loading-screen'>
+              <h1>Loading your interview plan...</h1>
+            </main>
+        )
+    }
+
+    console.log(report);                   // <-- Add this
+    console.log(report?.preperationPlan);  // <-- And this
+        
 
   return (
     <main className='interview'>
@@ -146,7 +164,7 @@ const Interview = () => {
           )}
 
           {/* Preparation Plan Section */}
-          {activeSection === 'preparationPlan' && (
+          {activeSection === 'roadmap' && (
             <>
               <div className='roadmap-header'>
                 <div>
