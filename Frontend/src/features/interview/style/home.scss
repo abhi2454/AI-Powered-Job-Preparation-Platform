@@ -29,6 +29,40 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        position: relative;
+    }
+
+    .home-toolbar {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0.75rem;
+    }
+
+    .logout-btn {
+        border: 1px solid #33465f;
+        border-radius: 999px;
+        padding: 0.58rem 1rem;
+        background: linear-gradient(180deg, #111a2a 0%, #0b1320 100%);
+        color: #f2dce7;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        box-shadow: 0 10px 24px #00000055, inset 0 0 0 1px #ffffff08;
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+
+        &:hover {
+            transform: translateY(-1px);
+            border-color: #ff5aa5;
+            color: #ffffff;
+            box-shadow: 0 12px 28px #00000066, 0 0 0 1px #ff2f8730;
+        }
+
+        &:focus-visible {
+            outline: none;
+            border-color: #ff5aa5;
+            box-shadow: 0 0 0 3px #ff2f8740;
+        }
     }
 
     .hero {
@@ -316,7 +350,6 @@
         transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 
         &:hover {
-            
             filter: brightness(1.04);
         }
     }
@@ -378,6 +411,10 @@
     .home {
         padding-top: 1.25rem;
         place-items: start center;
+
+        .home-toolbar {
+            margin-bottom: 0.65rem;
+        }
 
         .home-shell {
             width: min(700px, 100%);

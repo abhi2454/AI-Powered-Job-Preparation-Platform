@@ -2,10 +2,12 @@ import React,{useState, useRef} from 'react'
 import "../style/home.scss"
 import { useInterview } from '../hooks/useInterview'
 import { useNavigate } from 'react-router'
+import { useAuth } from '../../auth/hooks/useAuth'
 
 const Home = () => {
     
     const {loading, generateReport,reports} = useInterview()
+    const {handleLogout} = useAuth()
     const [jobDescription, setJobDescription] = useState("")
     const [selfDescription, setSelfDescription] = useState("")
     const resumeInputRef = useRef()
@@ -20,6 +22,11 @@ const Home = () => {
         navigate(`/interview/${data._id}`)
     }
 
+    const handleLogoutClick = async () => {
+        await handleLogout()
+        navigate('/login')
+    }
+
     if(loading) {
         return (
             <main className='loading-screen'>
@@ -31,6 +38,12 @@ const Home = () => {
   return (
         <main className='home'>
             <section className='home-shell'>
+                <div className='home-toolbar'>
+                    <button type='button' className='logout-btn' onClick={handleLogoutClick}>
+                        Logout
+                    </button>
+                </div>
+
                 <header className='hero'>
                     <h1>
                         Create Your Custom <span>Interview Plan</span>

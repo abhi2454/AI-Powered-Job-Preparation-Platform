@@ -43,8 +43,8 @@ export const useAuth = () => {
         setLoading(true)
         try {
 
-            const data = await logout()
-            setUser()
+            await logout()
+            setUser(null)
         }catch(err) {
 
         }finally {
