@@ -4,6 +4,8 @@ const {zodToJsonSchema} = require('zod-to-json-schema')
 const puppeteer = require("puppeteer-core");
 const chromium = require("@sparticuz/chromium");
 
+console.log(chromium);
+
 
 
 const ai = new GoogleGenAI({
